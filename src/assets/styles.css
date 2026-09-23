@@ -1,0 +1,577 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: black;
+}
+
+header {
+  background-color: white;
+  padding: 1.2rem 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.site-title {
+  background: none;
+  border: none;
+  color: #0056B3;
+  font-size: 2.2rem;
+  font-weight: bold;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+.site-title:hover {
+  color: #2E9E5B;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+nav button {
+  background: none;
+  color: #0056B3;
+  border: none;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+nav button:hover {
+  color: #2E9E5B;
+}
+
+main {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.home-page {
+  width: 100%;
+  margin: 0;
+}
+
+section {
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #0056B3;
+  font-weight: 600;
+}
+
+.hero {
+  position: relative;
+  padding: 0;
+  margin: 0 0 6rem 0;
+  background-color: white;
+}
+
+.hero-image {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  display: block;
+}
+
+.search-box {
+  width: 80%;
+  background-color: white;
+  position: absolute;
+  left: 10%;
+  bottom: -60px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+}
+
+.search-box h2 {
+  color: black;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.search-box p {
+  margin-top: 0;
+}
+
+.trip-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.trip-options select {
+  width: 100%;
+}
+
+.search-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-field label {
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+
+.search-field input,
+.trip-options select {
+  padding: 0.8rem;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.search-fields button {
+  background-color: #2E9E5B;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.about-home,
+.popular-section {
+  width: 80%;
+  margin: 1rem auto;
+  border-radius: 6px;
+}
+
+.destinations,
+.flights {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.destination-price {
+  color: #0056B3;
+  font-weight: 600;
+  margin: 0.4rem 0;
+}
+
+.card {
+  border: 1px solid lightgray;
+  padding: 1.2rem;
+  background-color: white;
+  border-radius: 6px;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.destination-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.button,
+button[type="submit"],
+.flights button {
+  display: inline-block;
+  background-color: #2E9E5B;
+  color: white;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.flights-page {
+  width: 100%;
+  margin: 0;
+}
+
+.flights-banner {
+  width: 100%;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.flights-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.flights-banner-text {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.flights-banner-text h2 {
+  margin-top: 0;
+  color: #0056B3;
+}
+
+.flights-banner-text p {
+  margin-bottom: 0;
+}
+
+.flights-page > section:not(.flights-banner) {
+  width: 80%;
+  margin: 0 auto 1rem auto;
+}
+
+.flight-results-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filters {
+  border: 1px solid lightgray;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.filters h3 {
+  margin-top: 0;
+  color: #0056B3;
+}
+
+.filters label {
+  font-weight: bold;
+  margin-top: 0.4rem;
+}
+
+.filters select {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.flight-results-layout .flights {
+  flex: 1;
+}
+
+.flight-results-layout .flights .card {
+  width: 100%;
+  padding: 1rem;
+}
+
+.flight-results-layout .flights .card h3 {
+  margin: 0 0 0.7rem 0;
+}
+
+.flight-results-layout .flights .card p {
+  margin: 0.4rem 0;
+}
+
+.flight-results-layout .flights .card button {
+  margin-top: 0.5rem;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 650px;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid lightgray;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+th {
+  background-color: #0056B3;
+  color: white;
+}
+
+.about-banner {
+  padding: 0;
+  overflow: hidden;
+}
+
+.about-hero {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center 75%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.about-banner-text {
+  padding: 1rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-info,
+.contact-form {
+  border: 1px solid lightgray;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+input,
+select,
+textarea {
+  padding: 0.7rem;
+  border: 1px solid lightgray;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: #2E9E5B;
+}
+
+.acknowledgement-card {
+  width: 90%;
+  margin: 1rem auto 2rem auto;
+  border: 1px solid lightgray;
+  border-top: 4px solid #2E9E5B;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+footer {
+  background-color: #111111;
+  color: white;
+  padding: 2rem 5% 1rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+}
+
+.footer-content p {
+  margin: 0.4rem 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-links button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.3rem 0;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.footer-links button:hover {
+  text-decoration: underline;
+}
+
+.footer-contact a {
+  color: white;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  text-align: center;
+  border-top: 1px solid #444444;
+  padding-top: 1rem;
+  margin: 1.5rem 0 0;
+}
+
+@media (min-width: 600px) {
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .site-title {
+    margin: 0;
+  }
+
+  nav {
+    flex-direction: row;
+  }
+
+  .trip-options {
+    flex-direction: row;
+  }
+
+  .trip-options select {
+    width: auto;
+  }
+
+  .destinations,
+  .flights {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 45%;
+  }
+
+  .contact {
+    flex-direction: row;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 50%;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-content > div {
+    width: 23%;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .hero-image {
+    height: 460px;
+  }
+
+  .search-box {
+    width: 80%;
+    left: 10%;
+    bottom: -60px;
+  }
+
+  .search-fields {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .search-field {
+    flex: 1;
+  }
+
+  .search-fields button {
+    height: 46px;
+    min-width: 160px;
+  }
+
+  main:not(.home-page):not(.flights-page) {
+    width: 80%;
+  }
+
+  .destinations,
+  .flights {
+    flex-wrap: nowrap;
+  }
+
+  .card {
+    width: 33%;
+  }
+
+  .acknowledgement-card {
+    width: 80%;
+  }
+
+  .flight-results-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .flight-results-layout .filters {
+    width: 27%;
+    flex-shrink: 0;
+  }
+
+  .flight-results-layout .flights {
+    width: 73%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .flight-results-layout .flights .card {
+    width: 100%;
+  }
+  }
