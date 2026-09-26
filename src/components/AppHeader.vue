@@ -1,26 +1,36 @@
 <script setup>
-const emit = defineEmits(['change-page'])
+import { useThemeStore } from '../stores/themeStore'
+import { useFlightStore } from '../stores/flightStore'
 
-function goToPage(page) {
-  emit('change-page', page)
-}
+const themeStore = useThemeStore()
+const flightStore = useFlightStore()
 </script>
 
 <template>
   <header>
 
-    <button
+    <RouterLink
+      to="/"
       class="site-title"
-      @click="goToPage('home')"
-      aria-label="Go to homepage"
     >
       SkyBook
-    </button>
+    </RouterLink>
 
     <nav>
-      <button @click="goToPage('home')">Home</button>
-      <button @click="goToPage('flights')">Flights</button>
-      <button @click="goToPage('about')">About & Contact</button>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/flights">Flights</RouterLink>
+      <RouterLink to="/about">About & Contact</RouterLink>
+
+      <span class="saved-count">
+        Saved: {{ flightStore.totalCount }}
+      </span>
+
+      <button
+        class="theme-button"
+        @click="themeStore.toggleTheme()"
+      >
+        {{ themeStore.isDark ? 'Light Mode' : 'Dark Mode' }}
+      </button>
     </nav>
 
   </header>

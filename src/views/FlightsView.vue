@@ -1,8 +1,11 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useFlightStore } from '../stores/flightStore'
 import flightsImage from '../assets/images/flights.jpg'
 
-const emit = defineEmits(['change-page'])
+const router = useRouter()
+const flightStore = useFlightStore()
 
 const selectedPrice = ref('All')
 const selectedAirline = ref('All')
@@ -10,6 +13,7 @@ const selectedTime = ref('All')
 
 const flights = [
   {
+    id: 1,
     route: 'Melbourne to Sydney',
     airline: 'SkyAir',
     departure: '9:00 AM',
@@ -19,6 +23,7 @@ const flights = [
     time: 'Morning'
   },
   {
+    id: 2,
     route: 'Melbourne to Dubai',
     airline: 'Global Air',
     departure: '2:30 PM',
@@ -28,6 +33,7 @@ const flights = [
     time: 'Afternoon'
   },
   {
+    id: 3,
     route: 'Sydney to Melbourne',
     airline: 'TravelJet',
     departure: '5:00 PM',
@@ -40,7 +46,6 @@ const flights = [
 
 const filteredFlights = computed(() => {
   return flights.filter((flight) => {
-
     const airlineMatch =
       selectedAirline.value === 'All' ||
       flight.airline === selectedAirline.value
@@ -67,15 +72,14 @@ const filteredFlights = computed(() => {
   })
 })
 
-function bookFlight() {
-  emit('change-page', 'about')
+function bookFlight(flight) {
+  flightStore.addFlight(flight)
+  router.push('/about')
 }
 </script>
-
 <template>
   <main class="flights-page">
 
-   
     <section class="flights-banner">
       <img
         :src="flightsImage"
@@ -91,8 +95,6 @@ function bookFlight() {
       </div>
     </section>
 
-
-  
     <section>
       <h2>Available Flights</h2>
 
@@ -102,15 +104,11 @@ function bookFlight() {
 
       <div class="flight-results-layout">
 
-       
         <div class="filters">
           <h3>Filter Results</h3>
 
           <label for="price-filter">Price</label>
-          <select
-            id="price-filter"
-            v-model="selectedPrice"
-          >
+          <select id="price-filter" v-model="selectedPrice">
             <option>All</option>
             <option>Under 200</option>
             <option>200 to 500</option>
@@ -118,10 +116,7 @@ function bookFlight() {
           </select>
 
           <label for="airline-filter">Airline</label>
-          <select
-            id="airline-filter"
-            v-model="selectedAirline"
-          >
+          <select id="airline-filter" v-model="selectedAirline">
             <option>All</option>
             <option>SkyAir</option>
             <option>Global Air</option>
@@ -129,10 +124,7 @@ function bookFlight() {
           </select>
 
           <label for="time-filter">Departure Time</label>
-          <select
-            id="time-filter"
-            v-model="selectedTime"
-          >
+          <select id="time-filter" v-model="selectedTime">
             <option>All</option>
             <option>Morning</option>
             <option>Afternoon</option>
@@ -143,7 +135,7 @@ function bookFlight() {
 
           <div
             v-for="flight in filteredFlights"
-            :key="flight.route"
+            :key="flight.id"
             class="card"
           >
             <h3>{{ flight.route }}</h3>
@@ -154,7 +146,7 @@ function bookFlight() {
             <p>Duration: {{ flight.duration }}</p>
             <p>Price: ${{ flight.price }}</p>
 
-            <button @click="bookFlight">
+            <button @click="bookFlight(flight)">
               Book
             </button>
           </div>
@@ -168,8 +160,6 @@ function bookFlight() {
       </div>
     </section>
 
-
-   
     <section>
       <h2>Flight Comparison</h2>
 
@@ -194,7 +184,7 @@ function bookFlight() {
           <tbody>
             <tr
               v-for="flight in filteredFlights"
-              :key="flight.route"
+              :key="flight.id"
             >
               <td>{{ flight.route }}</td>
               <td>{{ flight.airline }}</td>

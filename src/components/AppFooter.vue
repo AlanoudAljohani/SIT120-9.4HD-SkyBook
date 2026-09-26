@@ -1,11 +1,3 @@
-<script setup>
-const emit = defineEmits(['change-page'])
-
-function goToPage(page) {
-  emit('change-page', page)
-}
-</script>
-
 <template>
   <footer>
     <div class="footer-content">
@@ -18,9 +10,9 @@ function goToPage(page) {
       <div class="footer-links">
         <h3>Quick Links</h3>
 
-        <button @click="goToPage('home')">Home</button>
-        <button @click="goToPage('flights')">Flights</button>
-        <button @click="goToPage('about')">About & Contact</button>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/flights">Flights</RouterLink>
+        <RouterLink to="/about">About & Contact</RouterLink>
       </div>
 
       <div class="footer-contact">

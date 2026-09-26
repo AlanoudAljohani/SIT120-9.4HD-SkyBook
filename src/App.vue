@@ -1,19 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import { useThemeStore } from './stores/themeStore'
 
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 
-import HomeView from './views/HomeView.vue'
-import FlightsView from './views/FlightsView.vue'
-import AboutView from './views/AboutView.vue'
-
-const currentPage = ref('home')
+const themeStore = useThemeStore()
 const customerData = ref(null)
-
-function changePage(page) {
-  currentPage.value = page
-}
 
 function saveCustomerData(formData) {
   customerData.value = formData
@@ -21,23 +14,11 @@ function saveCustomerData(formData) {
 </script>
 
 <template>
-  <div>
+  <div :class="{ 'dark-mode': themeStore.isDark }">
 
-    <AppHeader @change-page="changePage" />
+    <AppHeader />
 
-    <HomeView
-      v-if="currentPage === 'home'"
-      @change-page="changePage"
-    />
-
-    <FlightsView
-      v-else-if="currentPage === 'flights'"
-      @change-page="changePage"
-    />
-
-    <AboutView
-      v-else-if="currentPage === 'about'"
-      customer-name="SkyBook Customer"
+    <RouterView
       @form-submitted="saveCustomerData"
     />
 
@@ -61,7 +42,7 @@ function saveCustomerData(formData) {
       </p>
     </section>
 
-    <AppFooter @change-page="changePage" />
+    <AppFooter />
 
   </div>
 </template>

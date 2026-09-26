@@ -1,6 +1,9 @@
 <script setup>
 import ContactForm from '../components/ContactForm.vue'
 import aboutImage from '../assets/images/about-airport.jpg'
+import { useFlightStore } from '../stores/flightStore'
+
+const flightStore = useFlightStore()
 
 defineProps({
   customerName: {
@@ -20,12 +23,12 @@ function receiveForm(formData) {
   <main>
 
     <section class="about-banner">
-
       <img
-  :src="aboutImage"
-  alt="Person searching for flights on a laptop"
-  class="about-hero"
->
+        :src="aboutImage"
+        alt="Person searching for flights on a laptop"
+        class="about-hero"
+      >
+
       <div class="about-banner-text">
         <h2>About SkyBook</h2>
 
@@ -34,7 +37,36 @@ function receiveForm(formData) {
           and choose a suitable option for their trip.
         </p>
       </div>
+    </section>
 
+    <section v-if="flightStore.totalCount > 0">
+      <h2>Saved Flights</h2>
+
+      <p>{{ flightStore.formattedSummary }}</p>
+
+      <div class="flights">
+        <div
+          v-for="flight in flightStore.savedFlights"
+          :key="flight.id"
+          class="card"
+        >
+          <h3>{{ flight.route }}</h3>
+          <p>Airline: {{ flight.airline }}</p>
+          <p>Departure: {{ flight.departure }}</p>
+          <p>Price: ${{ flight.price }}</p>
+
+          <button @click="flightStore.removeFlight(flight.id)">
+            Remove
+          </button>
+        </div>
+      </div>
+
+      <button
+  class="reset-button"
+  @click="flightStore.resetFlights()"
+>
+  Reset Saved Flights
+</button>
     </section>
 
     <section class="contact">

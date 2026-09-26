@@ -28,6 +28,7 @@ header {
   margin: 0 0 1rem 0;
   cursor: pointer;
   font-family: Arial, sans-serif;
+  text-decoration: none;
 }
 
 .site-title:hover {
@@ -38,20 +39,24 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  align-items: center;
 }
 
-nav button {
-  background: none;
+nav a {
   color: #0056B3;
-  border: none;
   padding: 0.6rem 1rem;
-  cursor: pointer;
+  text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
 }
 
-nav button:hover {
+nav a:hover {
   color: #2E9E5B;
+}
+
+nav a.router-link-active {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 main {
@@ -74,6 +79,8 @@ h2 {
   color: #0056B3;
   font-weight: 600;
 }
+
+/* HERO */
 
 .hero {
   position: relative;
@@ -157,6 +164,8 @@ h2 {
   font-weight: bold;
 }
 
+/* HOME */
+
 .about-home,
 .popular-section {
   width: 80%;
@@ -215,6 +224,8 @@ button[type="submit"],
   text-decoration: none;
   cursor: pointer;
 }
+
+/* FLIGHTS */
 
 .flights-page {
   width: 100%;
@@ -311,6 +322,8 @@ button[type="submit"],
   margin-top: 0.5rem;
 }
 
+/* TABLE */
+
 .table-container {
   width: 100%;
   overflow-x: auto;
@@ -333,6 +346,8 @@ th {
   background-color: #0056B3;
   color: white;
 }
+
+/* ABOUT */
 
 .about-banner {
   padding: 0;
@@ -364,7 +379,10 @@ th {
   border: 1px solid lightgray;
   padding: 1rem;
   border-radius: 6px;
+  width: 100%;
 }
+
+/* FORM */
 
 form {
   display: flex;
@@ -389,6 +407,8 @@ textarea {
   color: #2E9E5B;
 }
 
+/* ACKNOWLEDGEMENT */
+
 .acknowledgement-card {
   width: 90%;
   margin: 1rem auto 2rem auto;
@@ -398,6 +418,8 @@ textarea {
   padding: 1rem;
   border-radius: 6px;
 }
+
+/* FOOTER */
 
 footer {
   background-color: #111111;
@@ -428,17 +450,16 @@ footer {
   align-items: flex-start;
 }
 
-.footer-links button {
-  background: none;
-  border: none;
+/* RouterLink becomes an <a> element */
+.footer-links a {
   color: white;
   padding: 0.3rem 0;
-  cursor: pointer;
   font-size: 1rem;
   text-align: left;
+  text-decoration: none;
 }
 
-.footer-links button:hover {
+.footer-links a:hover {
   text-decoration: underline;
 }
 
@@ -457,19 +478,19 @@ footer {
   margin: 1.5rem 0 0;
 }
 
-@media (min-width: 600px) {
+/* TABLET */
 
+@media (min-width: 768px) and (max-width: 1023px) {
   header {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .site-title {
-    margin: 0;
+    flex-direction: column;
+    align-items: center;
   }
 
   nav {
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .trip-options {
@@ -490,15 +511,6 @@ footer {
     width: 45%;
   }
 
-  .contact {
-    flex-direction: row;
-  }
-
-  .contact-info,
-  .contact-form {
-    width: 50%;
-  }
-
   .footer-content {
     flex-direction: row;
     justify-content: space-between;
@@ -506,11 +518,34 @@ footer {
   }
 
   .footer-content > div {
-    width: 23%;
+    width: 30%;
   }
 }
 
+/* DESKTOP */
+
 @media (min-width: 1024px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .site-title {
+    margin: 0;
+  }
+
+  nav {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .trip-options {
+    flex-direction: row;
+  }
+
+  .trip-options select {
+    width: auto;
+  }
 
   .hero-image {
     height: 460px;
@@ -542,11 +577,21 @@ footer {
 
   .destinations,
   .flights {
+    flex-direction: row;
     flex-wrap: nowrap;
   }
 
   .card {
     width: 33%;
+  }
+
+  .contact {
+    flex-direction: row;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 50%;
   }
 
   .acknowledgement-card {
@@ -574,4 +619,73 @@ footer {
   .flight-results-layout .flights .card {
     width: 100%;
   }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
   }
+
+  .footer-content > div {
+    width: 23%;
+  }
+}
+
+/* DARK MODE */
+
+.dark-mode {
+  background-color: #1f1f1f;
+  color: white;
+  min-height: 100vh;
+}
+
+.dark-mode header,
+.dark-mode section,
+.dark-mode .card,
+.dark-mode .search-box,
+.dark-mode .filters,
+.dark-mode .contact-info,
+.dark-mode .contact-form,
+.dark-mode .acknowledgement-card {
+  background-color: #2b2b2b;
+  color: white;
+}
+
+.dark-mode h2,
+.dark-mode h3 {
+  color: #7db9ff;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #3a3a3a;
+  color: white;
+  border-color: #666666;
+}
+
+/* THEME BUTTON */
+
+.theme-button {
+  background-color: #0056B3;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* RESET BUTTON */
+
+.reset-button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #a93226;
+}
