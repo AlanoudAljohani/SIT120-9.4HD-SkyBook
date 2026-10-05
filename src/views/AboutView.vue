@@ -1,9 +1,6 @@
 <script setup>
 import ContactForm from '../components/ContactForm.vue'
 import aboutImage from '../assets/images/about-airport.jpg'
-import { useFlightStore } from '../stores/flightStore'
-
-const flightStore = useFlightStore()
 
 defineProps({
   customerName: {
@@ -39,34 +36,29 @@ function receiveForm(formData) {
       </div>
     </section>
 
-    <section v-if="flightStore.totalCount > 0">
-      <h2>Saved Flights</h2>
+    <section class="about-content">
+      <h2>Plan Your Journey with SkyBook</h2>
 
-      <p>{{ flightStore.formattedSummary }}</p>
+      <p>
+        SkyBook is designed to make flight planning simple and convenient.
+        Travellers can browse available flights, compare important details
+        such as airlines, departure times and prices, and book the option
+        that best suits their journey.
+      </p>
 
-      <div class="flights">
-        <div
-          v-for="flight in flightStore.savedFlights"
-          :key="flight.id"
-          class="card"
-        >
-          <h3>{{ flight.route }}</h3>
-          <p>Airline: {{ flight.airline }}</p>
-          <p>Departure: {{ flight.departure }}</p>
-          <p>Price: ${{ flight.price }}</p>
+      <p>
+        The website also provides useful filters to help travellers narrow
+        their search. Booked flights can be reviewed and managed from the
+        booking summary while users continue browsing other flight options.
+      </p>
 
-          <button @click="flightStore.removeFlight(flight.id)">
-            Remove
-          </button>
-        </div>
-      </div>
+      <h3>Our Goal</h3>
 
-      <button
-  class="reset-button"
-  @click="flightStore.resetFlights()"
->
-  Reset Saved Flights
-</button>
+      <p>
+        Our goal is to provide a clear and easy-to-use experience across
+        desktop and mobile devices, helping travellers organise their trip
+        with less effort.
+      </p>
     </section>
 
     <section class="contact">

@@ -1,10 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import { useFlightStore } from '../stores/flightStore'
 import flightsImage from '../assets/images/flights.jpg'
 
-const router = useRouter()
 const flightStore = useFlightStore()
 
 const selectedPrice = ref('All')
@@ -74,9 +72,9 @@ const filteredFlights = computed(() => {
 
 function bookFlight(flight) {
   flightStore.addFlight(flight)
-  router.push('/about')
 }
 </script>
+
 <template>
   <main class="flights-page">
 
@@ -100,6 +98,7 @@ function bookFlight(flight) {
 
       <p>
         Use the filters to narrow your search and compare flights before booking.
+        You can book a flight and continue browsing the other available options.
       </p>
 
       <div class="flight-results-layout">
@@ -146,8 +145,12 @@ function bookFlight(flight) {
             <p>Duration: {{ flight.duration }}</p>
             <p>Price: ${{ flight.price }}</p>
 
-            <button @click="bookFlight(flight)">
-              Book
+            <button
+              @click="bookFlight(flight)"
+              :disabled="flightStore.isSaved(flight.id)"
+              :class="{ 'booked-button': flightStore.isSaved(flight.id) }"
+            >
+              {{ flightStore.isSaved(flight.id) ? 'Booked' : 'Book' }}
             </button>
           </div>
 
@@ -158,6 +161,41 @@ function bookFlight(flight) {
         </div>
 
       </div>
+    </section>
+
+    <section class="booking-summary">
+      <h2>Booking Summary</h2>
+
+      <p>{{ flightStore.formattedSummary }}</p>
+
+      <p v-if="flightStore.savedFlights.length === 0">
+        You have not booked any flights yet.
+      </p>
+
+      <div
+        v-for="flight in flightStore.savedFlights"
+        :key="flight.id"
+        class="summary-item"
+      >
+        <div>
+          <h3>{{ flight.route }}</h3>
+          <p>Airline: {{ flight.airline }}</p>
+          <p>Departure: {{ flight.departure }}</p>
+          <p>Price: ${{ flight.price }}</p>
+        </div>
+
+        <button @click="flightStore.removeFlight(flight.id)">
+          Remove
+        </button>
+      </div>
+
+      <button
+        v-if="flightStore.savedFlights.length > 0"
+        class="reset-button"
+        @click="flightStore.resetFlights()"
+      >
+        Clear All
+      </button>
     </section>
 
     <section>

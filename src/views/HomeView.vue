@@ -1,11 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import heroImage from '../assets/images/hero-plane.jpg'
 import melImage from '../assets/images/mel.jpg'
 import sydImage from '../assets/images/syd.jpg'
 import dubaiImage from '../assets/images/dubai.jpg'
 
-const emit = defineEmits(['change-page'])
+const router = useRouter()
 
 const tripType = ref('One Way')
 const passengers = ref(1)
@@ -15,18 +16,17 @@ const departureDate = ref('')
 const returnDate = ref('')
 
 function searchFlights() {
-  emit('change-page', 'flights')
+  router.push('/flights')
 }
 
 function viewFlights() {
-  emit('change-page', 'flights')
+  router.push('/flights')
 }
 </script>
 
 <template>
   <main class="home-page">
 
-    
     <section class="hero">
       <img
         :src="heroImage"
@@ -61,7 +61,6 @@ function viewFlights() {
 
             <div class="search-field">
               <label for="from">From</label>
-
               <input
                 id="from"
                 v-model="fromCity"
@@ -73,7 +72,6 @@ function viewFlights() {
 
             <div class="search-field">
               <label for="to">To</label>
-
               <input
                 id="to"
                 v-model="toCity"
@@ -85,7 +83,6 @@ function viewFlights() {
 
             <div class="search-field">
               <label for="departure">Departure</label>
-
               <input
                 id="departure"
                 v-model="departureDate"
@@ -99,7 +96,6 @@ function viewFlights() {
               class="search-field"
             >
               <label for="return">Return</label>
-
               <input
                 id="return"
                 v-model="returnDate"
@@ -117,8 +113,6 @@ function viewFlights() {
       </div>
     </section>
 
-
-    
     <section class="about-home">
       <h2>About SkyBook</h2>
 
@@ -134,13 +128,11 @@ function viewFlights() {
       </p>
     </section>
 
-
     <section class="popular-section">
       <h2>Popular Destinations</h2>
 
       <div class="destinations">
 
-        
         <div class="card">
           <img
             :src="melImage"
@@ -167,8 +159,6 @@ function viewFlights() {
           </button>
         </div>
 
-
-       
         <div class="card">
           <img
             :src="sydImage"
@@ -195,8 +185,6 @@ function viewFlights() {
           </button>
         </div>
 
-
-        
         <div class="card">
           <img
             :src="dubaiImage"

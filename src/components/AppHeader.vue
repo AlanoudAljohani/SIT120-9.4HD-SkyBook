@@ -21,9 +21,12 @@ const flightStore = useFlightStore()
       <RouterLink to="/flights">Flights</RouterLink>
       <RouterLink to="/about">About & Contact</RouterLink>
 
-      <span class="saved-count">
-        Saved: {{ flightStore.totalCount }}
-      </span>
+      <RouterLink
+        to="/flights"
+        class="saved-count"
+      >
+        Booked: {{ flightStore.totalCount }}
+      </RouterLink>
 
       <button
         class="theme-button"

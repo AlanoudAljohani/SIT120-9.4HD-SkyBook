@@ -14,7 +14,7 @@ function saveCustomerData(formData) {
 </script>
 
 <template>
-  <div :class="{ 'dark-mode': themeStore.isDark }">
+  <div :class="themeStore.currentThemeClass">
 
     <AppHeader />
 

@@ -630,25 +630,39 @@ footer {
     width: 23%;
   }
 }
-
 /* DARK MODE */
 
 .dark-mode {
-  background-color: #1f1f1f;
+  background-color: #181818;
   color: white;
   min-height: 100vh;
 }
 
-.dark-mode header,
+.dark-mode header {
+  background-color: #242424;
+  color: white;
+  border-bottom: 1px solid #4a4a4a;
+}
+
 .dark-mode section,
-.dark-mode .card,
 .dark-mode .search-box,
 .dark-mode .filters,
 .dark-mode .contact-info,
 .dark-mode .contact-form,
 .dark-mode .acknowledgement-card {
-  background-color: #2b2b2b;
+  background-color: #292929;
   color: white;
+  border-color: #555555;
+}
+
+.dark-mode .card {
+  background-color: #363636;
+  color: white;
+  border-color: #606060;
+}
+
+.dark-mode .hero {
+  background-color: #181818;
 }
 
 .dark-mode h2,
@@ -656,14 +670,32 @@ footer {
   color: #7db9ff;
 }
 
+.dark-mode .search-box h2 {
+  color: white;
+}
+
 .dark-mode input,
 .dark-mode select,
 .dark-mode textarea {
-  background-color: #3a3a3a;
+  background-color: #404040;
   color: white;
-  border-color: #666666;
+  border-color: #777777;
 }
 
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #d0d0d0;
+}
+
+.dark-mode footer {
+  background-color: #101010;
+  color: white;
+  border-top: 1px solid #4a4a4a;
+}
+
+.dark-mode .card:hover {
+  box-shadow: 0 3px 12px rgba(255, 255, 255, 0.12);
+}
 /* THEME BUTTON */
 
 .theme-button {
@@ -673,10 +705,13 @@ footer {
   padding: 0.6rem 1rem;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-/* RESET BUTTON */
-
+.theme-button:hover {
+  background-color: #2E9E5B;
+}
 .reset-button {
   background-color: #c0392b;
   color: white;
@@ -688,4 +723,29 @@ footer {
 
 .reset-button:hover {
   background-color: #a93226;
+}
+.summary-item {
+  border: 1px solid lightgray;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+}
+
+.summary-item button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.summary-item button:hover {
+  background-color: #a93226;
+}
+
+.dark-mode .summary-item {
+  background-color: #363636;
+  border-color: #606060;
 }

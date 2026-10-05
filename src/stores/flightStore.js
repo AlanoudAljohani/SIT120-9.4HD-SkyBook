@@ -8,8 +8,11 @@ export const useFlightStore = defineStore('flights', {
   getters: {
     totalCount: (state) => state.savedFlights.length,
 
+    isSaved: (state) => (flightId) =>
+      state.savedFlights.some((flight) => flight.id === flightId),
+
     formattedSummary: (state) => {
-      return `You have ${state.savedFlights.length} saved flight(s)`
+      return `You have ${state.savedFlights.length} booked flight(s)`
     }
   },
 

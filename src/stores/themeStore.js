@@ -6,7 +6,10 @@ export const useThemeStore = defineStore('theme', {
   }),
 
   getters: {
-    isDark: (state) => state.theme === 'dark'
+    isDark: (state) => state.theme === 'dark',
+
+    currentThemeClass: (state) =>
+      state.theme === 'dark' ? 'dark-mode' : 'light-mode'
   },
 
   actions: {
