@@ -749,3 +749,13 @@ footer {
   background-color: #363636;
   border-color: #606060;
 }
+.booked-button:disabled {
+  background-color: #777;
+  color: white;
+  cursor: not-allowed;
+  opacity: 1;
+}
+.dark-mode .site-title,
+.dark-mode nav a {
+  color: #8ab4f8;
+}
